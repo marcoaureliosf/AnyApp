@@ -12,10 +12,9 @@ interface SignInFormData {
 }
 
 export function SignIn() {
-  const { register, handleSubmit } = useForm<SignInFormData>();
+  const { register, handleSubmit } = useForm();
 
   function onSubmit(data: SignInFormData) {
-    console.log(data)
 
   }
 
@@ -25,8 +24,8 @@ export function SignIn() {
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2>Faça seu logon</h2>
-        <Input name='email' type="email" icon={FiMail} placeholder="E-mail" register={register} />
-        <Input name='password' type="password" icon={FiLock} placeholder="Senha" register={register} />
+        <Input id='email' type="text" icon={FiMail} placeholder="E-mail" register={register} />
+        <Input id='password' type="password" icon={FiLock} placeholder="Senha" register={register} />
         <Button type='submit'>Entrar</Button>
       </form>
 
