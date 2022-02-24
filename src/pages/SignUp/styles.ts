@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 export const Container = styled.div`
   background: var(--background);
@@ -29,4 +30,18 @@ export const Container = styled.div`
     }
   }
 
+`;
+
+export const RedirectSignIn = styled(Link)`
+  text-decoration: none;
+  
+  div {
+    display: flex;
+    align-items: center;
+    color: var(--text-body);
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
 `;

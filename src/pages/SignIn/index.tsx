@@ -1,10 +1,11 @@
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import { useForm } from 'react-hook-form'
+import { useNavigate } from 'react-router-dom';
 
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-import { Container } from "./styles";
+import { Container, RedirectSignUp } from "./styles";
 
 interface SignInFormData {
   email?: string;
@@ -14,8 +15,11 @@ interface SignInFormData {
 export function SignIn() {
   const { register, handleSubmit } = useForm();
 
+  const history = useNavigate();
+  
   function onSubmit(data: SignInFormData) {
-
+    
+    history('/dashboard')
   }
 
   return (
@@ -29,7 +33,11 @@ export function SignIn() {
         <Button type='submit'>Entrar</Button>
       </form>
 
-      <div><FiLogIn /> Criar uma conta</div>
+      <RedirectSignUp to="/signup" >
+        <div>
+          <FiLogIn /> Criar uma conta
+        </div>
+      </RedirectSignUp>
     </Container>
   )
 }

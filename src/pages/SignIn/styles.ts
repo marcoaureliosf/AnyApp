@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 export const Container = styled.div`
@@ -29,4 +30,18 @@ export const Container = styled.div`
     }
   }
 
+`;
+
+export const RedirectSignUp = styled(Link)`
+  text-decoration: none;
+  
+  div {
+    display: flex;
+    align-items: center;
+    color: var(--text-body);
+
+    &:hover {
+      color: var(--blue);
+    }
+  }
 `;

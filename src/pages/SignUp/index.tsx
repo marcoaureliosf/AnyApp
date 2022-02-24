@@ -6,7 +6,7 @@ import { yupResolver } from '@hookform/resolvers/yup';
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-import { Container } from "./styles";
+import { Container, RedirectSignIn } from "./styles";
 
 interface SignUpFormData {
   name?: string;
@@ -21,15 +21,15 @@ const validationSchema = yup.object({
 })
 
 export function SignUp() {
-  const InitialValue:SignUpFormData = {
+  const InitialValue: SignUpFormData = {
     name: '',
     email: '',
     password: ''
   }
-  const { register, handleSubmit, watch, formState: { errors } } = useForm({ defaultValues: InitialValue,resolver: yupResolver(validationSchema) });
+  const { register, handleSubmit, watch, formState: { errors } } = useForm({ defaultValues: InitialValue, resolver: yupResolver(validationSchema) });
 
   function onSubmit(data: SignUpFormData) {
-
+    
   }
 
   return (
@@ -67,7 +67,11 @@ export function SignUp() {
         <Button type='submit'>Cadastrar</Button>
       </form>
 
-      <div><FiArrowLeft /> Voltar para logon</div>
+      <RedirectSignIn to="/" >
+        <div>
+          <FiArrowLeft size={20}/> Voltar para logon
+        </div>
+      </RedirectSignIn>
     </Container>
   )
 }
