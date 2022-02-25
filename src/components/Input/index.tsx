@@ -1,6 +1,6 @@
 import { InputHTMLAttributes, useCallback, useState } from 'react'
 import { IconBaseProps } from 'react-icons/lib'
-import { Path, UseFormRegister, UseFormWatch, UseWatchProps, WatchInternal, WatchObserver } from 'react-hook-form'
+import { Path, UseFormRegister } from 'react-hook-form'
 import { InputError } from '../InputError'
 import { FiAlertCircle } from 'react-icons/fi'
 
