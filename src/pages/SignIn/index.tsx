@@ -51,7 +51,7 @@ export function SignIn() {
 
   return (
     <Container>
-      <h1>AnyApp</h1>
+      <h1><span>Any</span>App</h1>
 
       <form onSubmit={handleSubmit(onSubmit)}>
         <h2>Faça seu logon</h2>

@@ -17,6 +17,20 @@ export const Container = styled.div`
   h1 {
     font-size: 3rem;
     margin-bottom: 2rem;
+
+    span {
+      color: #FF9000;
+      animation: neon 3s alternate infinite ease-in-out;
+
+      @keyframes neon {
+        from {
+          filter: drop-shadow(0 0 0 #FF9000);
+        }
+        to {
+          filter: drop-shadow(0 0 30px #FF9000);
+        }
+      }
+    }
   }
 
   form {
