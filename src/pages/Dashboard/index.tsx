@@ -1,15 +1,15 @@
-import { useState } from 'react';
-import {FiHome, FiTool, FiMessageCircle, FiHelpCircle} from 'react-icons/fi';
+import { useCallback, useState } from 'react';
+import { FiHome, FiTool, FiMessageCircle, FiHelpCircle } from 'react-icons/fi';
 
 import { Container } from './styles';
 
 export function Dashboard() {
   const [isOpen, setIsOpen] = useState(false)
-  
-  function handleClick() {
+
+  const handleClick = useCallback(() => {
     setIsOpen(!isOpen)
-  }
-  
+  }, [])
+
   return (
     <Container onOpen={isOpen}>
       <header>
@@ -25,16 +25,16 @@ export function Dashboard() {
           <nav>
             <ul>
               <li>
-                <a href="#"><FiHome/> Home</a>
+                <a href="#"><FiHome /> Home</a>
               </li>
               <li>
-                <a href="#"><FiTool/> Options</a>
+                <a href="#"><FiTool /> Options</a>
               </li>
               <li>
-                <a href="#"><FiMessageCircle/> Notifications</a>
+                <a href="#"><FiMessageCircle /> Notifications</a>
               </li>
               <li>
-                <a href="#"><FiHelpCircle/> Help</a>
+                <a href="#"><FiHelpCircle /> Help</a>
               </li>
             </ul>
           </nav>

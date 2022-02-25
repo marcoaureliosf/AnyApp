@@ -39,10 +39,11 @@ export function SignIn() {
     try {
       const currentUser = users.find(user => user.email === data.email && user.password === user.password);
 
-      if (currentUser) {
+      if (currentUser?.email === data.email && currentUser?.password === data.password) {
         history('/dashboard')
+      } else {
+        toast.error('Usuário não cadastrado!');
       }
-      toast.error('Usuário não cadastrado!');
     } catch (erro) {
       console.log(erro)
     }
