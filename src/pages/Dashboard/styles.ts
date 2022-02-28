@@ -5,7 +5,6 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: var(--background);
   height: 100vh;
   padding: 1rem;
   
@@ -25,7 +24,6 @@ export const Container = styled.div<ContainerProps>`
         margin: 0;
         display: block;
         font-size: 2rem;
-        
       }
       
       .menu-section {
@@ -51,9 +49,10 @@ export const Container = styled.div<ContainerProps>`
   }
 
   header {
-    background: black;
+    background: ${props => props.theme.colors.header};
     border-radius: 0 0 0.5rem 0.5rem;
     margin: -1rem;
+    color: #FCFCFC;
   }
   
   h1 {
@@ -75,7 +74,7 @@ export const Container = styled.div<ContainerProps>`
 
   a {
     text-decoration: none;
-    color: var(--textbody);
+    color: #FCFCFC;
     text-transform: uppercase;
     font-size: 1.5rem; 
     border-radius: 0.25rem;

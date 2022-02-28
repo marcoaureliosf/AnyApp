@@ -3,7 +3,6 @@ import styled from 'styled-components';
 import backgroundImg from '../../assets/signInBackground.jpeg'
 
 export const Container = styled.div`
-  background: var(--background);
   height: 100vh;
   transition: all 1s;
   display: flex;
@@ -19,7 +18,6 @@ export const Container = styled.div`
 
 export const Content = styled.main`
   width: 100%;
-  color: var(--text-body);
   z-index: 1;
 
   display: flex;
@@ -62,7 +60,7 @@ export const Content = styled.main`
     display: flex;
     align-items: center;
     text-decoration: none;
-    color: var(--text-body);
+    color: ${props => props.theme.colors.text};
 
     &:hover {
       color: var(--blue);
@@ -82,7 +80,7 @@ export const Background = styled.div`
 
 export const Gradient = styled.div`
   background: rgba(0,0,0,0.2);
-  background-image: linear-gradient(to top, rgba(0,0,0,0.4) 0, rgba(0,0,0,0) 20%,rgba(0,0,0,0) 90%, rgba(0,0,0,0.6) 100%);
+  background-image: linear-gradient(to top, rgba(0,0,0,0.4) 0, rgba(0,0,0,0) 20%,rgba(0,0,0,0) 80%, rgba(0,0,0,0.4) 100%);
   position: absolute;
   
   top: 0;

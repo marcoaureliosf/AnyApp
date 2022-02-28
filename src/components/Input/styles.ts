@@ -7,11 +7,10 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  background: #313543;
+  background: ${props => props.theme.colors.background};
   border-radius: 8px;
   width: 100%;
   padding: 1rem;
-  color: var(--text-body);
 
   display: flex;
   align-items: center;
@@ -24,7 +23,7 @@ export const Container = styled.div<ContainerProps>`
     width: 100%;
     background: transparent;
     border: 0;
-    color: var(--text-body);
+    color: ${props => props.theme.colors.text};
 
     & + input {
       margin-top: 0.5rem;

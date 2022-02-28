@@ -2,10 +2,7 @@ import { createGlobalStyle } from "styled-components";
 
 export const GlobalStyle = createGlobalStyle`
 
-  :root {
-    --background: #272936;
-    --text-body: #FCFCFC;
-    
+  :root {    
     --blue: #187BD1;
   }
 
@@ -29,9 +26,10 @@ export const GlobalStyle = createGlobalStyle`
   }
 
   body {
-    background: #ffffff;
-    color: #ffffff;
+    background: ${props => props.theme.colors.background};
+    color: ${props => props.theme.colors.text};
     -webkit-font-smoothing: antialiased;
+    transition: all 1s;
   }
 
   body, input, textarea, button {

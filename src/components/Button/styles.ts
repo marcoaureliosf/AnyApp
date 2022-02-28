@@ -4,7 +4,7 @@ export const Container = styled.button`
   background: var(--blue);
   border-radius: 8px;
   border: 0;
-  color: var(--text-body);
+  color: #FCFCFC;
   font-weight: 500;
   margin-top: 1rem;
 

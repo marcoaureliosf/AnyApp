@@ -13,7 +13,6 @@ interface UsersFormData {
 
 interface UsersContextData {
   createUser: (data: UsersFormData) => void;
-  // findUser: (data: UsersFormData) => void;
   users: UsersFormData[];
   setUsers: (newState: UsersFormData[]) => void;
 }
