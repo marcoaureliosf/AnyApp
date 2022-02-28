@@ -1,24 +1,66 @@
 import styled, { css } from "styled-components";
 
 interface ContainerProps {
-  onOpen: boolean;
+  isOpen: boolean;
 }
 
 export const Container = styled.div<ContainerProps>`
   background: var(--background);
   height: 100vh;
   padding: 1rem;
+  
+  @media (min-width:1024px) {
+    display: flex;
+    justify-content: center;
+    
+    header {
+      max-width: 1280px;
+      width: 100%;
+      height: 20rem;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      
+      h1 {
+        margin: 0;
+        display: block;
+        font-size: 2rem;
+        
+      }
+      
+      .menu-section {
+        padding: 0;
+        .menu-toggle {
+          display: none;
+        }
+
+        nav {
+          width: 100%;
+          display: flex;
+          ul {
+            width: 100%;
+            display: flex;
+            align-items: flex-end;
+            justify-content: space-evenly;
+          }
+        }
+      }
+
+      
+    }
+  }
 
   header {
     background: black;
-    padding: 2rem;
+    border-radius: 0 0 0.5rem 0.5rem;
     margin: -1rem;
   }
   
-  header .container {
+  h1 {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    padding: 1rem;
 
     width: 90%;
     max-width: 980px;
@@ -35,7 +77,7 @@ export const Container = styled.div<ContainerProps>`
     text-decoration: none;
     color: var(--textbody);
     text-transform: uppercase;
-    font-size: 2rem; 
+    font-size: 1.5rem; 
     border-radius: 0.25rem;
     padding: 0.5rem 0.5rem;
     line-height: 4rem;
@@ -64,6 +106,7 @@ export const Container = styled.div<ContainerProps>`
   .menu-section {
     display: flex;
     justify-content: flex-end;
+    padding: 1rem;
   }
   
   .menu-toggle {
@@ -74,7 +117,7 @@ export const Container = styled.div<ContainerProps>`
 
   /* fullscreen */
   ${props =>
-    props.onOpen &&
+    props.isOpen &&
     css`
         position: absolute;
         top:0;
@@ -96,7 +139,7 @@ export const Container = styled.div<ContainerProps>`
         background: transparent;
       }
 
-      header .container {
+      h1 {
         display: none;
       }
         

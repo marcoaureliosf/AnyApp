@@ -7,8 +7,9 @@ import { useUsers } from '../../hooks/useUser';
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-import { Container, RedirectSignIn } from "./styles";
-import { useNavigate } from 'react-router-dom';
+import { Container, Content, Background, Gradient } from "./styles";
+
+import { Link, useNavigate } from 'react-router-dom';
 
 interface SignUpFormData {
   name?: string;
@@ -42,44 +43,47 @@ export function SignUp() {
 
   return (
     <Container>
-      <h1><span>Any</span>App</h1>
+      <Content>
+        <h1><span className='anyapp'>Any</span>App</h1>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <h2>Faça seu cadastro</h2>
-        <Input
-          id='name'
-          type="text" icon={FiUser}
-          placeholder="Nome"
-          register={register}
-          watch={watch}
-          error={errors?.name?.type && errors.name.message}
-        />
-        <Input
-          id='email'
-          type="text"
-          icon={FiMail}
-          placeholder="E-mail"
-          register={register}
-          watch={watch}
-          error={errors?.email?.type && errors.email.message}
-        />
-        <Input
-          id='password'
-          type="password"
-          icon={FiLock}
-          placeholder="Senha"
-          register={register}
-          watch={watch}
-          error={errors?.password?.type && errors.password.message}
-        />
-        <Button type='submit'>Cadastrar</Button>
-      </form>
-
-      <RedirectSignIn to="/" >
-        <div>
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h2>Faça seu cadastro</h2>
+          <Input
+            id='name'
+            type="text" icon={FiUser}
+            placeholder="Nome"
+            register={register}
+            watch={watch}
+            error={errors?.name?.type && errors.name.message}
+          />
+          <Input
+            id='email'
+            type="text"
+            icon={FiMail}
+            placeholder="E-mail"
+            register={register}
+            watch={watch}
+            error={errors?.email?.type && errors.email.message}
+          />
+          <Input
+            id='password'
+            type="password"
+            icon={FiLock}
+            placeholder="Senha"
+            register={register}
+            watch={watch}
+            error={errors?.password?.type && errors.password.message}
+          />
+          <Button type='submit'>Cadastrar</Button>
+        </form>
+        <Link to="/" >
           <FiArrowLeft size={20} /> Voltar para logon
-        </div>
-      </RedirectSignIn>
+        </Link>
+      </Content>
+
+      <Background />
+
+      <Gradient />
     </Container>
   )
 }

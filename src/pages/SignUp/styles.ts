@@ -1,25 +1,38 @@
 import styled from 'styled-components';
-import { Link } from 'react-router-dom';
+
+import signUpBackgroundImg from '../../assets/signUpBackground.jpg'
 
 export const Container = styled.div`
   background: var(--background);
-  color: var(--text-body);
-  
-  width: 100%;
   height: 100vh;
+  transition: all 1s;
+  display: flex;
+  align-items: stretch;
+
+  @media (min-width: 1024px) {
+    main {
+      width: 40%;
+    }
+  }
+
+`;
+
+export const Content = styled.main`
+  width: 100%;
+  color: var(--text-body);
+  z-index: 1;
 
   display: flex;
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin: 0 auto;
 
   h1 {
     font-size: 3rem;
     margin-bottom: 2rem;
   }
 
-  span {
+  .anyapp {
       color: #FF9000;
       animation: neon 3s alternate infinite ease-in-out;
 
@@ -55,18 +68,36 @@ export const Container = styled.div`
     }
   }
 
-`;
-
-export const RedirectSignIn = styled(Link)`
-  text-decoration: none;
-  
-  div {
+  a {
     display: flex;
     align-items: center;
+    text-decoration: none;
     color: var(--text-body);
 
     &:hover {
       color: var(--blue);
     }
   }
+`;
+
+export const Background = styled.div`
+  order: -1;
+  flex: 1;
+  background: url(${signUpBackgroundImg}) no-repeat center;
+  background-size: cover;
+
+  @media (max-width: 1023px) {
+    display: none;
+  }
+`;
+
+export const Gradient = styled.div`
+  background: rgba(0,0,0,0.2);
+  background-image: linear-gradient(to top, rgba(0,0,0,0.4) 0, rgba(0,0,0,0) 20%,rgba(0,0,0,0) 90%, rgba(0,0,0,0.6) 100%);
+  position: absolute;
+  
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
 `;

@@ -1,15 +1,15 @@
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import { useForm } from 'react-hook-form'
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
+import { useUsers } from '../../hooks/useUser';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
-import { Container, RedirectSignUp } from "./styles";
-import { useUsers } from '../../hooks/useUser';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { Container, Content, Background, Gradient } from "./styles";
 
 interface SignInFormData {
 
@@ -51,36 +51,39 @@ export function SignIn() {
 
   return (
     <Container>
-      <h1><span>Any</span>App</h1>
+      <Content>
+        <h1><span className='anyapp'>Any</span>App</h1>
+        
+        <form onSubmit={handleSubmit(onSubmit)}>
+          <h2>Faça seu logon</h2>
+          <Input
+            id='email'
+            type="text"
+            icon={FiMail}
+            placeholder="E-mail"
+            register={register}
+            watch={watch}
+            error={errors?.email?.type && errors.email.message}
+          />
+          <Input
+            id='password'
+            type="password"
+            icon={FiLock}
+            placeholder="Senha"
+            register={register}
+            watch={watch}
+            error={errors?.password?.type && errors.password.message}
+          />
+          <Button type='submit'>Entrar</Button>
+        </form>
+        <Link to="/signup" >
+            <FiLogIn /> Criar uma conta
+        </Link>
+      </Content>
 
-      <form onSubmit={handleSubmit(onSubmit)}>
-        <h2>Faça seu logon</h2>
-        <Input
-          id='email'
-          type="text"
-          icon={FiMail}
-          placeholder="E-mail"
-          register={register}
-          watch={watch}
-          error={errors?.email?.type && errors.email.message}
-        />
-        <Input
-          id='password'
-          type="password"
-          icon={FiLock}
-          placeholder="Senha"
-          register={register}
-          watch={watch}
-          error={errors?.password?.type && errors.password.message}
-        />
-        <Button type='submit'>Entrar</Button>
-      </form>
+      <Background/>
 
-      <RedirectSignUp to="/signup" >
-        <div>
-          <FiLogIn /> Criar uma conta
-        </div>
-      </RedirectSignUp>
+      <Gradient />
     </Container>
   )
 }

@@ -4,20 +4,19 @@ import { FiHome, FiTool, FiMessageCircle, FiHelpCircle } from 'react-icons/fi';
 import { Container } from './styles';
 
 export function Dashboard() {
-  const [isOpen, setIsOpen] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
 
-  const handleClick = useCallback(() => {
-    setIsOpen(!isOpen)
+  const handleClick = useCallback((onOpen: boolean) => {
+    setIsOpen(!onOpen)
   }, [])
 
   return (
-    <Container onOpen={isOpen}>
+    <Container isOpen={isOpen}>
       <header>
-        <div className='container'>
-          <h1>DASHBOARD</h1>
-        </div>
+        <h1>DASHBOARD</h1>
+
         <div className="menu-section">
-          <div onClick={handleClick} className="menu-toggle">
+          <div onClick={() => handleClick(isOpen)} className="menu-toggle">
             <div className="one"></div>
             <div className="two"></div>
             <div className="three"></div>
