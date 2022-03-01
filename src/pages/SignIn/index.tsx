@@ -2,7 +2,7 @@ import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import { useForm } from 'react-hook-form'
 import { Link, useNavigate } from 'react-router-dom';
 import { toast } from 'react-toastify';
-import { useUsers } from '../../hooks/useUser';
+import { useUsers } from '../../contexts/useUser';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -14,8 +14,8 @@ import { Container, Content, Background, Gradient } from "./styles";
 
 interface SignInFormData {
 
-  email?: string;
-  password?: string;
+  email: string | null;
+  password: string | null;
 }
 
 const validationSchema = yup.object({

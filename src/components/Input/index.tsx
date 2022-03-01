@@ -7,16 +7,16 @@ import { FiAlertCircle } from 'react-icons/fi'
 import { Container, ErrorContainer } from './styles'
 
 interface SignFormData {
-  name?: string;
-  email?: string;
-  password?: string;
+  name?: string | null;
+  email: string | null;
+  password: string| null;
 }
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
   icon: React.ComponentType<IconBaseProps>;
   register: UseFormRegister<SignFormData>;
   id: Path<SignFormData>;
-  error?: string | any;
+  error?: string | null;
   watch?: any;
 }
 

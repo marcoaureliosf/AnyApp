@@ -5,12 +5,12 @@ interface ContainerProps {
 }
 
 export const Container = styled.div<ContainerProps>`
-  height: 100vh;
   padding: 1rem;
+  display: flex;
+  flex-direction: column;
   
   @media (min-width:1024px) {
-    display: flex;
-    justify-content: center;
+    align-items: center;
     
     header {
       max-width: 1280px;
@@ -42,16 +42,15 @@ export const Container = styled.div<ContainerProps>`
             justify-content: space-evenly;
           }
         }
-      }
 
-      
+      }
     }
   }
 
   header {
     background: ${props => props.theme.colors.header};
-    border-radius: 0 0 0.5rem 0.5rem;
-    margin: -1rem;
+    border-radius: 0.5rem 0.5rem 0 0;
+    margin-top: -1rem;
     color: #FCFCFC;
   }
   
@@ -83,13 +82,25 @@ export const Container = styled.div<ContainerProps>`
     transition: all 250ms linear 0s;
     
     &:hover {
-      background-color: rgba(255,255,255, 0.20)
+      background-color: rgba(255,255,255, 0.20);
     }
   }
 
   nav {
     display: none;
   }
+
+  main {
+    background-color: var(--blue);
+    width: 100%;
+    max-width: 1280px;
+    border-radius:0 0 0.5rem 0.5rem;
+    
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    grid-gap: 1rem;
+    justify-items: center;
+  } 
 
   .one,
   .two,
@@ -145,6 +156,10 @@ export const Container = styled.div<ContainerProps>`
       nav {
         display: block;
       }
+
+      main {
+        display: none;
+      }
       
       .menu-toggle {
         position: absolute;
@@ -164,5 +179,30 @@ export const Container = styled.div<ContainerProps>`
         transform: rotate(-45deg) translate(8px, -9px);
       }
     `}
+`;
 
-`; 
+export const User = styled.div`
+  background: ${props => props.theme.colors.user};
+  border: solid 2px;
+  max-width: 300px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 3rem;
+
+  &:hover {
+    border-color: #FF9000;
+    cursor: pointer;
+  }
+
+  h2, p {
+    display: flex;
+    align-items: center;
+    margin: 0.5rem;
+  }
+  
+  svg {
+    margin-right: 0.5rem;
+  }
+`;

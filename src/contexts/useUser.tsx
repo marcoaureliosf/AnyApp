@@ -1,14 +1,14 @@
-import { createContext, ReactNode, useCallback, useContext, useState } from 'react';
+import { createContext, ReactNode, useCallback, useContext, useEffect, useState } from 'react';
 
 interface UserProviderProps {
   children: ReactNode;
 }
 
 interface UsersFormData {
-  id?: number
-  name?: string;
-  email?: string;
-  password?: string;
+  id?: number;
+  name?: string | null;
+  email: string | null;
+  password: string | null;
 }
 
 interface UsersContextData {

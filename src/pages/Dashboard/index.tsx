@@ -1,9 +1,12 @@
 import { useCallback, useState } from 'react';
-import { FiHome, FiTool, FiMessageCircle, FiHelpCircle } from 'react-icons/fi';
+import { FiHome, FiTool, FiMessageCircle, FiHelpCircle, FiUser, FiMail } from 'react-icons/fi';
+import { useUsers } from '../../contexts/useUser';
 
-import { Container } from './styles';
+import { Container, User } from './styles';
 
 export function Dashboard() {
+  const { users } = useUsers();
+
   const [isOpen, setIsOpen] = useState(false);
 
   const handleClick = useCallback((onOpen: boolean) => {
@@ -39,6 +42,23 @@ export function Dashboard() {
           </nav>
         </div>
       </header>
+      <main>
+        {users.map(user => (
+          <User key={user.id}>
+
+
+            <h2>
+              <span><FiUser size={20} color="#187BD1" /> </span>
+              {user.name}
+            </h2>
+
+            <p>
+              <span><FiMail size={20} color="#187BD1" /></span>
+              {user.email}
+            </p>
+          </User>
+        ))}
+      </main>
     </Container >
   )
 }
