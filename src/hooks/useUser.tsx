@@ -1,4 +1,4 @@
-import { createContext, ReactNode, useContext, useState } from 'react';
+import { createContext, ReactNode, useCallback, useContext, useState } from 'react';
 
 interface UserProviderProps {
   children: ReactNode;
@@ -22,7 +22,7 @@ const UsersContext = createContext<UsersContextData>({} as UsersContextData)
 export function UserProvider({ children }: UserProviderProps) {
   const [users, setUsers] = useState<UsersFormData[]>([])
 
-  function createUser(data: UsersFormData) {
+  const createUser = useCallback((data: UsersFormData) => {
     try {
       const newUser = {
         id: users.length + 1,
@@ -32,10 +32,10 @@ export function UserProvider({ children }: UserProviderProps) {
       }
 
       setUsers([...users, newUser])
-    } catch (erro) {
-      console.log(erro)
+    } catch (error) {
+      console.log(error)
     }
-  }
+  }, [])
 
   return (
     <UsersContext.Provider

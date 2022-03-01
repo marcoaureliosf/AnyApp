@@ -3,6 +3,7 @@ import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 import { useUsers } from '../../hooks/useUser';
+import { toast } from 'react-toastify';
 
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
@@ -25,7 +26,7 @@ const validationSchema = yup.object({
 
 export function SignUp() {
 
-  const { createUser } = useUsers()
+  const { createUser, users } = useUsers()
 
   const InitialValue: SignUpFormData = {
     name: '',
@@ -37,8 +38,15 @@ export function SignUp() {
   const history = useNavigate();
 
   function onSubmit(data: SignUpFormData) {
-    createUser(data)
-    history('/')
+    const currentUser = users.find(users => users.email === data.email)
+
+    if (currentUser) {
+      toast.error('E-mail já cadastrado!')
+    } else {
+      createUser(data)
+      history('/')
+    }
+
   }
 
   return (

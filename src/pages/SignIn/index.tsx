@@ -45,8 +45,8 @@ export function SignIn() {
       } else {
         toast.error('Usuário não cadastrado!');
       }
-    } catch (erro) {
-      console.log(erro)
+    } catch (error) {
+      console.log(error)
     }
   }
 
