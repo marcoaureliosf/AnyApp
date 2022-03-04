@@ -5,10 +5,13 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "server": "json-server -d 1000 -w -p 3333 server.json"
   },
   "dependencies": {
     "@hookform/resolvers": "^2.8.8",
+    "axios": "^0.26.0",
+    "json-server": "^0.17.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-hook-form": "^7.27.1",
@@ -17,6 +20,7 @@
     "react-switch": "^6.0.0",
     "react-toastify": "^8.2.0",
     "styled-components": "^5.3.3",
+    "swr": "^1.2.2",
     "yup": "^0.32.11"
   },
   "devDependencies": {

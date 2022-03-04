@@ -91,16 +91,20 @@ export const Container = styled.div<ContainerProps>`
   }
 
   main {
-    background-color: var(--blue);
-    width: 100%;
     max-width: 1280px;
-    border-radius:0 0 0.5rem 0.5rem;
-    
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    grid-gap: 1rem;
-    justify-items: center;
-  } 
+    width: 100%;
+    section {
+      background-color: var(--blue);
+      border-radius:0 0 0.5rem 0.5rem;
+      ul {
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
+        grid-gap: 1rem;
+        justify-items: center;
+      }
+    } 
+  }
 
   .one,
   .two,
@@ -181,28 +185,43 @@ export const Container = styled.div<ContainerProps>`
     `}
 `;
 
-export const User = styled.div`
-  background: ${props => props.theme.colors.user};
-  border: solid 2px;
-  max-width: 300px;
-  width: 100%;
+export const InputContainer = styled.form`
   display: flex;
-  flex-direction: column;
   justify-content: center;
-  margin: 3rem;
-
-  &:hover {
-    border-color: #FF9000;
-    cursor: pointer;
-  }
-
-  h2, p {
-    display: flex;
-    align-items: center;
-    margin: 0.5rem;
-  }
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  background-color: var(--blue);
+  width: 100%;
+  /* max-width: 1280px; */
   
-  svg {
+
+  input {
+    max-width: 500px;
+    width: 100%;
+    height: 3rem;
+    padding: 1rem;
+    color: #000;
+    border: solid 2px;
+    border-radius: 0.5rem;
     margin-right: 0.5rem;
+    margin-left: 1rem;
+  }
+
+  button {
+    width: 80px;
+    background: #23252D;
+    color: #fcfcfc;
+    border: none;
+    border-radius: 0.5rem;
+    margin-right: 1rem;
+
+    &:hover {
+      border:solid #FFF 2px;
+    }
+
+    &:active {
+      color: #000;
+      border: none;
+    }
   }
 `;

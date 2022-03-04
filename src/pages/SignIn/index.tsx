@@ -1,8 +1,7 @@
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import { useForm } from 'react-hook-form'
-import { Link, useNavigate } from 'react-router-dom';
-import { toast } from 'react-toastify';
-import { useUsers } from '../../contexts/useUser';
+import { Link} from 'react-router-dom';
+import { useUser} from '../../contexts/useUser';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -13,7 +12,6 @@ import { Input } from "../../components/Input";
 import { Container, Content, Background, Gradient } from "./styles";
 
 interface SignInFormData {
-
   email: string | null;
   password: string | null;
 }
@@ -25,7 +23,7 @@ const validationSchema = yup.object({
 
 export function SignIn() {
 
-  const { users } = useUsers();
+  const { findUserEmail } = useUser();
 
   const InitialValue: SignInFormData = {
     email: '',
@@ -34,20 +32,8 @@ export function SignIn() {
 
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ defaultValues: InitialValue, resolver: yupResolver(validationSchema) });
 
-  const history = useNavigate();
-
   function onSubmit(data: SignInFormData) {
-    try {
-      const currentUser = users.find(user => user.email === data.email && user.password === user.password);
-
-      if (currentUser?.email === data.email && currentUser?.password === data.password) {
-        history('/dashboard')
-      } else {
-        toast.error('Usuário não cadastrado!');
-      }
-    } catch (error) {
-      console.log(error)
-    }
+   findUserEmail(data, 1)
   }
 
   return (

@@ -1,17 +1,35 @@
-import { useCallback, useState } from 'react';
-import { FiHome, FiTool, FiMessageCircle, FiHelpCircle, FiUser, FiMail } from 'react-icons/fi';
-import { useUsers } from '../../contexts/useUser';
+import { FormEvent, useCallback, useState } from 'react';
+import { FiHome, FiTool, FiMessageCircle, FiHelpCircle, FiSearch } from 'react-icons/fi';
+import { Users } from '../../components/User';
+import { useUser } from '../../contexts/useUser';
+import { useApi } from '../../hooks/api';
+import { useForm } from 'react-hook-form';
 
-import { Container, User } from './styles';
+import { Container, InputContainer } from './styles';
 
 export function Dashboard() {
-  const { users } = useUsers();
-
   const [isOpen, setIsOpen] = useState(false);
+  const [filter, setFilter] = useState('');
+
+  const { register, handleSubmit } = useForm();
 
   const handleClick = useCallback((onOpen: boolean) => {
     setIsOpen(!onOpen)
   }, [])
+
+  const { users, setUsers } = useUser();
+
+  const onSubmit = useCallback(({ filter }: any) => {
+    setFilter(filter)
+  }, [])
+
+  const { data } = useApi(filter ? `users?q=${filter}` : 'users');
+
+  setUsers(data);
+
+  if (!users) {
+    return <h1>Carregando...</h1>
+  }
 
   return (
     <Container isOpen={isOpen}>
@@ -43,21 +61,26 @@ export function Dashboard() {
         </div>
       </header>
       <main>
-        {users.map(user => (
-          <User key={user.id}>
-
-
-            <h2>
-              <span><FiUser size={20} color="#187BD1" /> </span>
-              {user.name}
-            </h2>
-
-            <p>
-              <span><FiMail size={20} color="#187BD1" /></span>
-              {user.email}
-            </p>
-          </User>
-        ))}
+        <InputContainer onSubmit={handleSubmit(onSubmit)}>
+          <input
+            type="text"
+            placeholder='Pesquisar usuários'
+            id='filter'
+            {...register('filter')}
+          />
+          <button type="submit"><FiSearch /> Filtrar</button>
+        </InputContainer>
+        <section>
+          <ul>
+            {users?.map(user => (
+              <Users
+                key={user.id}
+                name={user.name}
+                email={user.email}
+              />
+            ))}
+          </ul>
+        </section>
       </main>
     </Container >
   )

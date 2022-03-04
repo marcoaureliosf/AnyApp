@@ -15,7 +15,7 @@ import dark from './styles/themes/dark';
 
 import { GlobalStyle } from "./styles/global";
 
-import { UserProvider } from "./hooks/useUser";
+import { UserProvider } from "./contexts/useUser";
 
 export function App() {
   const [theme, setTheme] = usePersistedState<DefaultTheme>('theme', dark);

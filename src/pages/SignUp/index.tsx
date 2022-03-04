@@ -2,15 +2,14 @@ import { FiArrowLeft, FiMail, FiLock, FiUser } from 'react-icons/fi';
 import { useForm } from 'react-hook-form';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useUsers } from '../../contexts/useUser';
-import { toast } from 'react-toastify';
+import { useUser } from '../../contexts/useUser';
 
 import { Button } from "../../components/Button";
 import { Input } from "../../components/Input";
 
 import { Container, Content, Background, Gradient } from "./styles";
 
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 interface SignUpFormData {
   name?: string | null;
@@ -26,7 +25,7 @@ const validationSchema = yup.object({
 
 export function SignUp() {
 
-  const { createUser, users } = useUsers()
+  const { findUserEmail } = useUser();
 
   const InitialValue: SignUpFormData = {
     name: '',
@@ -35,18 +34,9 @@ export function SignUp() {
   }
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ defaultValues: InitialValue, resolver: yupResolver(validationSchema) });
 
-  const history = useNavigate();
 
   function onSubmit(data: SignUpFormData) {
-    const currentUser = users.find(users => users.email === data.email)
-
-    if (currentUser) {
-      toast.error('E-mail já cadastrado!')
-    } else {
-      createUser(data)
-      history('/')
-    }
-
+    findUserEmail(data, 0)
   }
 
   return (
