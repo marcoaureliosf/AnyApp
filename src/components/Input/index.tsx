@@ -9,7 +9,7 @@ import { Container, ErrorContainer } from './styles'
 interface SignFormData {
   name?: string | null;
   email: string | null;
-  password: string| null;
+  password: string | null;
 }
 
 interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
@@ -33,7 +33,7 @@ export function Input({ icon: Icon, register, id, error, watch, ...rest }: Input
 
     setIsFilled(!!watch(id))
   }, [])
-  
+
   return (
     <Container isFocused={isFocused} isFilled={isFilled} isErrored={!!error}>
       {<Icon size={20} />}

@@ -1,4 +1,4 @@
-import { FormEvent, useCallback, useState } from 'react';
+import { useCallback, useState } from 'react';
 import { FiHome, FiTool, FiMessageCircle, FiHelpCircle, FiSearch } from 'react-icons/fi';
 import { Users } from '../../components/User';
 import { useUser } from '../../contexts/useUser';

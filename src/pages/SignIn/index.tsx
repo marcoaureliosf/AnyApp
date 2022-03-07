@@ -1,7 +1,7 @@
 import { FiLogIn, FiMail, FiLock } from 'react-icons/fi'
 import { useForm } from 'react-hook-form'
-import { Link} from 'react-router-dom';
-import { useUser} from '../../contexts/useUser';
+import { Link } from 'react-router-dom';
+import { useUser } from '../../contexts/useUser';
 import * as yup from 'yup';
 import { yupResolver } from '@hookform/resolvers/yup';
 
@@ -33,14 +33,14 @@ export function SignIn() {
   const { register, handleSubmit, watch, formState: { errors } } = useForm({ defaultValues: InitialValue, resolver: yupResolver(validationSchema) });
 
   function onSubmit(data: SignInFormData) {
-   findUserEmail(data, 1)
+    findUserEmail(data, 1)
   }
 
   return (
     <Container>
       <Content>
         <h1><span className='anyapp'>Any</span>App</h1>
-        
+
         <form onSubmit={handleSubmit(onSubmit)}>
           <h2>Faça seu logon</h2>
           <Input
@@ -64,11 +64,11 @@ export function SignIn() {
           <Button type='submit'>Entrar</Button>
         </form>
         <Link to="/signup" >
-            <FiLogIn /> Criar uma conta
+          <FiLogIn /> Criar uma conta
         </Link>
       </Content>
 
-      <Background/>
+      <Background />
 
       <Gradient />
     </Container>
